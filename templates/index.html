@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JARVIC | Wi-Fi Manager</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <header class="header">
+
+            <div class="brand">
+                <div class="brand-icon">J</div>
+
+                <div>
+                    <h1>JARVIC</h1>
+                    <p>ESP8266 CONTROL SYSTEM</p>
+                </div>
+            </div>
+
+            <div class="connection-indicator">
+                <span class="indicator-dot"></span>
+                CLOUD PANEL
+            </div>
+
+        </header>
+
+
+        <main class="main-content">
+
+            <section class="welcome-section">
+
+                <span class="eyebrow">DEVICE CONFIGURATION</span>
+
+                <h2>Wi-Fi Manager</h2>
+
+                <p>
+                    Manage your ESP8266 wireless connection remotely.
+                    Update your network credentials from anywhere.
+                </p>
+
+            </section>
+
+
+            <section class="dashboard-grid">
+
+                <div class="card settings-card">
+
+                    <div class="card-heading">
+                        <div>
+                            <h3>Network Settings</h3>
+                            <p>Enter your new Wi-Fi credentials.</p>
+                        </div>
+
+                        <div class="card-icon">⌁</div>
+                    </div>
+
+
+                    <form id="wifiForm">
+
+                        <div class="form-group">
+
+                            <label for="adminToken">
+                                Admin Security Token
+                            </label>
+
+                            <input
+                                type="password"
+                                id="adminToken"
+                                placeholder="Enter admin token"
+                                required
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="ssid">
+                                Wi-Fi Name (SSID)
+                            </label>
+
+                            <input
+                                type="text"
+                                id="ssid"
+                                placeholder="Enter Wi-Fi name"
+                                maxlength="32"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="password">
+                                Wi-Fi Password
+                            </label>
+
+                            <div class="password-wrapper">
+
+                                <input
+                                    type="password"
+                                    id="password"
+                                    placeholder="Enter Wi-Fi password"
+                                    maxlength="63"
+                                    required
+                                >
+
+                                <button
+                                    type="button"
+                                    id="togglePassword"
+                                    class="show-password"
+                                >
+                                    Show
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <button type="submit" id="saveButton" class="save-button">
+
+                            <span id="buttonText">Save & Connect</span>
+
+                        </button>
+
+                    </form>
+
+
+                    <div id="message" class="message hidden"></div>
+
+                    <p class="security-note">
+                        <span>🔒</span>
+                        Credentials are encrypted before storage.
+                    </p>
+
+                </div>
+
+
+                <div class="card status-card">
+
+                    <div class="card-heading">
+                        <div>
+                            <h3>Device Status</h3>
+                            <p>ESP8266 connection information.</p>
+                        </div>
+
+                        <div class="status-icon">◉</div>
+                    </div>
+
+
+                    <div class="device-status" id="deviceStatus">
+
+                        <span class="status-circle"></span>
+
+                        <div>
+                            <strong id="statusText">Checking...</strong>
+                            <p id="statusDescription">
+                                Waiting for device information
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-details">
+
+                        <div class="detail-row">
+                            <span>Device</span>
+                            <strong>JARVIC ESP8266</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Wi-Fi Name</span>
+                            <strong id="currentSSID">Not configured</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Configuration Version</span>
+                            <strong id="version">0</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Last Communication</span>
+                            <strong id="lastSeen">Not available</strong>
+                        </div>
+
+                    </div>
+
+                    <button type="button" id="refreshButton" class="refresh-button">
+                        ↻ Refresh Status
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <footer>
+                <p>JARVIC © 2026 | ESP8266 Remote Management</p>
+                <span>Powered by Flask & Render</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>
